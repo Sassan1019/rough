@@ -11,7 +11,48 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollAnimations();
   initParallax();
   initPhilosophyCards();
+  initMobileMenu();
+  initHeaderScroll();
 });
+
+/**
+ * Initialize mobile menu toggle
+ */
+function initMobileMenu() {
+  const menuToggle = document.querySelector('.menu-toggle');
+  const siteNav = document.querySelector('.site-nav');
+
+  if (!menuToggle || !siteNav) return;
+
+  menuToggle.addEventListener('click', () => {
+    menuToggle.classList.toggle('open');
+    siteNav.classList.toggle('open');
+  });
+
+  // Close menu when clicking nav links
+  siteNav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menuToggle.classList.remove('open');
+      siteNav.classList.remove('open');
+    });
+  });
+}
+
+/**
+ * Initialize header scroll detection
+ */
+function initHeaderScroll() {
+  const header = document.querySelector('.site-header');
+  if (!header) return;
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+}
 
 /**
  * Initialize scroll-triggered fade-in animations
