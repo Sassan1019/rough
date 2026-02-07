@@ -1,36 +1,37 @@
 /* =============================================
    ROUGH RUNNERS - Design System
    =============================================
-   Color Palette (WCAG AA compliant):
-   - Background Light: #f0ebe4 (Warm Beige)
-   - Background Dark: #3d3429 (Deep Brown)
-   - Text Primary: #3d3429 (High contrast - 9.8:1)
-   - Text Secondary: #6b5e52 (Good contrast - 5.2:1)
-   - Text Muted: #b5a898 (Decorative only)
-   - Border: #d6cdc2
+   Refined Color Palette:
+   - Background: #ffffff (Pure White)
+   - Background Alt: #f8f8f8 (Light Gray)
+   - Text Primary: #111111 (Near Black)
+   - Text Secondary: #666666 (Medium Gray)
+   - Accent: #000000 (Black)
+   - Border: #e0e0e0 (Light Border)
    ============================================= */
 
 /* =============================================
    CSS VARIABLES & RESET
    ============================================= */
 :root {
-  /* Colors - WCAG AA compliant */
-  --color-bg-light: #f0ebe4;
-  --color-bg-medium: #e5dfd6;
-  --color-bg-dark: #3d3429;
-  --color-text-primary: #3d3429;
-  --color-text-secondary: #6b5e52;
-  --color-text-muted: #b5a898;
-  --color-text-light: #f0ebe4;
-  --color-border: #d6cdc2;
+  /* Colors - Clean & Modern */
+  --color-bg-light: #ffffff;
+  --color-bg-medium: #f8f8f8;
+  --color-bg-dark: #111111;
+  --color-text-primary: #111111;
+  --color-text-secondary: #666666;
+  --color-text-muted: #999999;
+  --color-text-light: #ffffff;
+  --color-border: #e0e0e0;
   --color-white: #ffffff;
+  --color-accent: #000000;
 
   /* Legacy color aliases for compatibility */
-  --color-base: #f0ebe4;
-  --color-main: #3d3429;
-  --color-accent: #e5dfd6;
-  --color-hero-bg: #5a4a3d;
-  --color-deep: #3d3429;
+  --color-base: #ffffff;
+  --color-main: #111111;
+  --color-accent: #000000;
+  --color-hero-bg: #111111;
+  --color-deep: #111111;
 
   /* Typography - Space Grotesk (EN) + Noto Sans JP (JP) */
   --font-en: 'Space Grotesk', sans-serif;
@@ -784,53 +785,53 @@ body {
   left: 0;
   right: 0;
   z-index: 1000;
-  padding: 1.5rem 2rem;
+  padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: transparent;
-  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-border);
+  transition: box-shadow 0.3s ease;
 }
 
 .site-header.scrolled {
-  background: rgba(240, 235, 228, 0.95);
-  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .site-header.dark {
-  background: transparent;
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .site-header.dark.scrolled {
-  background: rgba(61, 52, 41, 0.95);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .site-logo {
   font-family: var(--font-display);
   font-size: 1.25rem;
-  font-weight: 400;
+  font-weight: 500;
   color: var(--color-text-primary);
   text-decoration: none;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
 }
 
 .site-header.dark .site-logo {
-  color: var(--color-white);
+  color: var(--color-text-primary);
 }
 
 .site-nav {
   display: flex;
-  gap: 2.5rem;
+  gap: 2rem;
 }
 
 .site-nav a {
   font-family: var(--font-body);
-  font-size: var(--text-xs);
+  font-size: var(--text-sm);
   font-weight: 400;
   color: var(--color-text-secondary);
   text-decoration: none;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+  letter-spacing: 0.02em;
   transition: color 0.3s ease;
 }
 
@@ -839,11 +840,11 @@ body {
 }
 
 .site-header.dark .site-nav a {
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--color-text-secondary);
 }
 
 .site-header.dark .site-nav a:hover {
-  color: var(--color-white);
+  color: var(--color-text-primary);
 }
 
 /* Mobile Menu */
