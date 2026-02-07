@@ -32,11 +32,13 @@
   --color-hero-bg: #5a4a3d;
   --color-deep: #3d3429;
 
-  /* Typography */
-  --font-serif: 'Cormorant Garamond', serif;
-  --font-sans: 'Noto Sans JP', 'Zen Kaku Gothic New', sans-serif;
-  --font-display: 'Anton', 'Cormorant Garamond', sans-serif;
-  --font-body: 'Noto Sans JP', 'Zen Kaku Gothic New', sans-serif;
+  /* Typography - Space Grotesk (EN) + Noto Sans JP (JP) */
+  --font-en: 'Space Grotesk', sans-serif;
+  --font-jp: 'Noto Sans JP', sans-serif;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Space Grotesk', 'Noto Sans JP', sans-serif;
+  --font-serif: 'Space Grotesk', sans-serif;
+  --font-sans: 'Noto Sans JP', sans-serif;
 
   /* Type Scale */
   --text-xs: 0.75rem;
@@ -83,7 +85,7 @@ html {
 
 body {
   font-family: var(--font-body);
-  font-weight: 400;
+  font-weight: 300;
   background-color: var(--color-bg-light);
   color: var(--color-text-secondary);
   line-height: 2.0;
