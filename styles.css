@@ -867,7 +867,7 @@ body {
 }
 
 .site-header.dark .menu-toggle span {
-  background: var(--color-white);
+  background: var(--color-text-primary);
 }
 
 @media (max-width: 768px) {
