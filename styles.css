@@ -1131,7 +1131,7 @@ body {
 }
 
 .qa-item.open .qa-answer {
-  max-height: 300px;
+  max-height: 500px;
   padding-bottom: 1.25rem;
 }
 
