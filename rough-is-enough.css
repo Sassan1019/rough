@@ -1,0 +1,255 @@
+/* =============================================
+   Rough is Enough - Design System
+   =============================================
+   Color Palette (WCAG 4.5:1+ contrast):
+   - Background: #f0ebe4
+   - Body Text: #6b5e52 (contrast ratio 5.2:1)
+   - Headings: #3d3429 (contrast ratio 9.8:1)
+   - Accent: #b5a898
+   - Subtle: #d6cdc2
+   ============================================= */
+
+/* =============================================
+   CSS RESET & VARIABLES
+   ============================================= */
+:root {
+    /* Colors */
+    --color-bg: #f0ebe4;
+    --color-text: #6b5e52;
+    --color-heading: #3d3429;
+    --color-accent: #b5a898;
+    --color-subtle: #d6cdc2;
+    --color-border: #ddd5cb;
+
+    /* Typography */
+    --font-display: 'Cormorant Garamond', serif;
+    --font-body: 'Noto Sans JP', sans-serif;
+
+    /* Spacing */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 3rem;
+    --space-xl: 5rem;
+    --space-2xl: 8rem;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    font-weight: 400;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 2.0;
+    overflow-x: hidden;
+}
+
+/* =============================================
+   SCROLL PROGRESS BAR
+   ============================================= */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0%;
+    background: linear-gradient(90deg, var(--color-accent) 0%, #8a7968 100%);
+    z-index: 1000;
+    transition: width 0.1s ease-out;
+}
+
+/* =============================================
+   HERO SECTION
+   ============================================= */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: var(--space-lg);
+}
+
+.hero-content {
+    text-align: center;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1.2s ease-out 0.3s forwards;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    font-weight: 400;
+    color: var(--color-heading);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: var(--space-md);
+}
+
+.hero-subtitle {
+    font-family: var(--font-body);
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    font-weight: 300;
+    color: var(--color-accent);
+    letter-spacing: 0.25em;
+}
+
+.hero-scroll-line {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 0;
+    background-color: var(--color-accent);
+    animation: lineGrow 2s ease-out 1.5s forwards;
+}
+
+@keyframes lineGrow {
+    to {
+        height: 80px;
+    }
+}
+
+/* =============================================
+   CONTENT SECTION
+   ============================================= */
+.content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--space-2xl) var(--space-lg) 10rem;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg) var(--space-xl);
+}
+
+@media (max-width: 960px) {
+    .cards-grid {
+        grid-template-columns: 1fr;
+        max-width: 560px;
+        margin: 0 auto;
+        gap: var(--space-xl);
+    }
+}
+
+@media (max-width: 600px) {
+    .content {
+        padding: var(--space-xl) var(--space-md) 6rem;
+    }
+}
+
+/* =============================================
+   CARDS
+   ============================================= */
+.card {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.card-number {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+}
+
+.card-number span {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--color-accent);
+    letter-spacing: 0.2em;
+}
+
+.card-number-line {
+    flex: 1;
+    height: 1px;
+    background-color: var(--color-subtle);
+}
+
+.card-title {
+    font-family: var(--font-body);
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--color-heading);
+    line-height: 1.8;
+    margin-bottom: var(--space-md);
+}
+
+.card-body p {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--color-text);
+    line-height: 2.2;
+    margin-bottom: 1.2rem;
+}
+
+.card-body p:last-child {
+    margin-bottom: 0;
+}
+
+/* =============================================
+   FOOTER
+   ============================================= */
+.footer {
+    border-top: 1px solid var(--color-border);
+    padding: var(--space-xl) var(--space-lg);
+    text-align: center;
+}
+
+.footer-quote {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--color-accent);
+    letter-spacing: 0.15em;
+}
+
+/* =============================================
+   RESPONSIVE FINE-TUNING
+   ============================================= */
+@media (max-width: 375px) {
+    html {
+        font-size: 14px;
+    }
+
+    .hero-title {
+        font-size: 2.4rem;
+    }
+
+    .content {
+        padding: var(--space-lg) var(--space-sm) var(--space-xl);
+    }
+}
