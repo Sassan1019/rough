@@ -1129,13 +1129,41 @@ body {
 /* =============================================
    CONTACT PAGE
    ============================================= */
+.contact-intro {
+  max-width: 600px;
+  margin: 0 auto var(--space-xl);
+  text-align: center;
+}
+
+.contact-intro p {
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+  line-height: 2;
+}
+
 .contact-form {
-  max-width: 480px;
+  max-width: 600px;
   margin: 0 auto;
+}
+
+.form-row {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.form-group-half {
+  flex: 1;
 }
 
 .form-group {
   margin-bottom: var(--space-md);
+}
+
+@media (max-width: 600px) {
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
 }
 
 .form-label {
