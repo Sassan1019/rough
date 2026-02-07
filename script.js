@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initPhilosophyCards();
   initMobileMenu();
   initHeaderScroll();
+  initQAAccordion();
 });
 
 /**
@@ -176,5 +177,34 @@ function initPhilosophyCards() {
 
   cards.forEach(card => {
     observer.observe(card);
+  });
+}
+
+/**
+ * Initialize Q&A accordion functionality
+ */
+function initQAAccordion() {
+  const qaItems = document.querySelectorAll('.qa-item');
+
+  qaItems.forEach(item => {
+    const question = item.querySelector('.qa-question');
+
+    if (!question) return;
+
+    question.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+
+      // Close all other items (optional - remove if you want multiple open)
+      // qaItems.forEach(otherItem => otherItem.classList.remove('open'));
+
+      // Toggle current item
+      if (isOpen) {
+        item.classList.remove('open');
+        question.setAttribute('aria-expanded', 'false');
+      } else {
+        item.classList.add('open');
+        question.setAttribute('aria-expanded', 'true');
+      }
+    });
   });
 }
