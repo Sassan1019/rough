@@ -1,37 +1,37 @@
 /* =============================================
    ROUGH RUNNERS - Design System
    =============================================
-   Refined Color Palette:
-   - Background: #ffffff (Pure White)
-   - Background Alt: #f8f8f8 (Light Gray)
-   - Text Primary: #111111 (Near Black)
-   - Text Secondary: #666666 (Medium Gray)
-   - Accent: #000000 (Black)
-   - Border: #e0e0e0 (Light Border)
+   Approachable Color Palette:
+   - Background: #fafafa (Soft White)
+   - Background Alt: #f5f5f5 (Warm Gray)
+   - Text Primary: #1a1a1a (Soft Black)
+   - Text Secondary: #555555 (Warm Gray)
+   - Accent: #2d2d2d (Charcoal)
+   - Border: #ebebeb (Soft Border)
    ============================================= */
 
 /* =============================================
    CSS VARIABLES & RESET
    ============================================= */
 :root {
-  /* Colors - Clean & Modern */
-  --color-bg-light: #ffffff;
-  --color-bg-medium: #f8f8f8;
-  --color-bg-dark: #111111;
-  --color-text-primary: #111111;
-  --color-text-secondary: #666666;
-  --color-text-muted: #999999;
-  --color-text-light: #ffffff;
-  --color-border: #e0e0e0;
+  /* Colors - Warm & Approachable */
+  --color-bg-light: #fafafa;
+  --color-bg-medium: #f5f5f5;
+  --color-bg-dark: #1a1a1a;
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #555555;
+  --color-text-muted: #888888;
+  --color-text-light: #fafafa;
+  --color-border: #ebebeb;
   --color-white: #ffffff;
-  --color-accent: #000000;
+  --color-accent: #2d2d2d;
 
   /* Legacy color aliases for compatibility */
-  --color-base: #ffffff;
-  --color-main: #111111;
-  --color-accent: #000000;
-  --color-hero-bg: #111111;
-  --color-deep: #111111;
+  --color-base: #fafafa;
+  --color-main: #1a1a1a;
+  --color-accent: #2d2d2d;
+  --color-hero-bg: #1a1a1a;
+  --color-deep: #1a1a1a;
 
   /* Typography - Space Grotesk (EN) + Noto Sans JP (JP) */
   --font-en: 'Space Grotesk', sans-serif;
