@@ -1416,7 +1416,23 @@ body {
   font-size: 1.5rem;
   color: var(--color-text-light);
   letter-spacing: 0.1em;
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.site-footer-links {
+  margin-bottom: var(--space-md);
+}
+
+.site-footer-links a {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.site-footer-links a:hover {
+  color: var(--color-white);
 }
 
 .site-footer-copy {
