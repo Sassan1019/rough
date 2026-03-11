@@ -218,7 +218,7 @@ async function initNoteRSS() {
   if (!container) return;
 
   // Set the Note ID here
-  const noteId = 'sassan1019';
+  const noteId = 'roughtell';
   const rssUrl = `https://note.com/${noteId}/rss`;
   
   // Free RSS to JSON API
