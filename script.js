@@ -211,7 +211,7 @@ function initQAAccordion() {
 }
 
 /**
- * Fetch and display Note articles via RSS
+ * Fetch and display Note articles via API
  */
 async function initNoteRSS() {
   const container = document.getElementById('news-container');
@@ -219,44 +219,44 @@ async function initNoteRSS() {
 
   // Set the Note ID here
   const noteId = 'roughtell';
-  const rssUrl = `https://note.com/${noteId}/rss`;
+  const targetUrl = `https://note.com/api/v2/creators/${noteId}/contents?kind=note&page=1`;
   
-  // Free RSS to JSON API
-  const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
+  // Use allorigins proxy to bypass CORS
+  const apiUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(targetUrl)}`;
 
   try {
     const response = await fetch(apiUrl);
-    const data = await response.json();
+    const proxyData = await response.json();
+    
+    // Parse the actual API response from the proxy result
+    const data = JSON.parse(proxyData.contents);
 
-    if (data.status === 'ok' && data.items.length > 0) {
+    if (data && data.data && data.data.contents && data.data.contents.length > 0) {
       container.innerHTML = ''; // Clear loading message
-
-      // Extract the category if available, otherwise default to "お知らせ"
-      // note.com RSS doesn't strictly have categories per item in simple feeds,
-      // but we can extract "categories" array from rss2json
       
-      data.items.slice(0, 10).forEach(item => {
-        // Date formatting: pubDate is like "2023-11-20 04:00:20"
-        const dateObj = new Date(item.pubDate);
+      data.data.contents.slice(0, 10).forEach(item => {
+        // Date formatting: publishAt is like "2026-03-11T10:45:53+09:00"
+        const dateObj = new Date(item.publishAt);
         const year = dateObj.getFullYear();
         const month = String(dateObj.getMonth() + 1).padStart(2, '0');
         const day = String(dateObj.getDate()).padStart(2, '0');
         const formattedDate = `${year}.${month}.${day}`;
         
+        // Extract first hashtag if available, otherwise default to "お知らせ"
         let category = 'お知らせ';
-        if (item.categories && item.categories.length > 0) {
-          category = item.categories[0];
+        if (item.hashtags && item.hashtags.length > 0) {
+          category = item.hashtags[0].hashtag.name.replace('#', '');
         }
 
         const newsItem = document.createElement('div');
         newsItem.className = 'news-item fade-in';
         newsItem.innerHTML = `
-          <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="news-link">
+          <a href="${item.noteUrl}" target="_blank" rel="noopener noreferrer" class="news-link">
             <div class="news-meta">
-              <time class="news-date" datetime="${item.pubDate}">${formattedDate}</time>
+              <time class="news-date" datetime="${item.publishAt}">${formattedDate}</time>
               <span class="news-category">${category}</span>
             </div>
-            <h3 class="news-title">${item.title}</h3>
+            <h3 class="news-title">${item.name}</h3>
           </a>
         `;
         container.appendChild(newsItem);
@@ -268,7 +268,7 @@ async function initNoteRSS() {
       throw new Error('No articles found');
     }
   } catch (error) {
-    console.error('Error fetching note RSS:', error);
+    console.error('Error fetching note RSS/API:', error);
     container.innerHTML = '<div class="news-error">記事の読み込みに失敗しました。しばらく経ってから再度お試しください。</div>';
   }
 }
